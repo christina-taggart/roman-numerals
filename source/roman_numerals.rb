@@ -43,16 +43,31 @@ def to_roman(num)
   hundreds -= 5 if hundreds >= 5
   hundreds -= 5 if hundreds >= 5
   old_school_roman_numeral = "M" * thousands + "D" * five_hundreds + "C" * hundreds + "L" * fifties + "X" * tens + "V" * fives + "I" * ones
-  
+
+  # convert old_school_roman_numerals to modern roman numerals with regexp
+  modern_roman_numeral = old_school_roman_numeral
+  modern_roman_numeral.gsub!(/I{4}/, "IV")
+  modern_roman_numeral.gsub!(/VIV/, "IX")
+  modern_roman_numeral.gsub!(/C{4}/, "CD")
+  modern_roman_numeral.gsub!(/X{4}/, "XL")
+
+  modern_roman_numeral
 end
 
 # Drive code... this should print out trues.
 
-puts to_roman(1) == "I"
-puts to_roman(3) == "III"
-puts to_roman(4) == "IIII"
-puts to_roman(6) == "VI"
-puts to_roman(9) == "VIIII"
-puts to_roman(1646) == "MDCXXXXVI"
+puts "My totally sweet testing script"
+puts ""
+puts "input | expected | actual"
+puts "------|----------|-------"
+puts "4     | IV       | #{to_roman(4)}"
+puts "9     | IX       | #{to_roman(9)}"
+puts "13    | XIII     | #{to_roman(13)}"
+puts "1453  | MCDLIII  | #{to_roman(1453)}"
+puts "1646  | MDCXLVI  | #{to_roman(1646)}"
+
+# More testing
+puts "-------------"
+(0..17).each { |i| puts to_roman(i) }
 
 # TODO: what other cases could you add to ensure your to_roman method is working?
