@@ -6,11 +6,17 @@
 def to_roman(number)
   solution = ""
   numerals = { 1000 => "M",
+               900 => "DM",
                500 => "D",
+               400 => "CD",
                100 => "C",
+               90 => "LC",
                50 => "L",
+               40 => "XL",
                10 => "X",
+               9 => "IX",
                5 => "V",
+               4 => "IV",
                1 => "I" }
 
   numerals.each do |arabic, roman|
@@ -26,8 +32,10 @@ end
 
 puts to_roman(1) == "I"
 puts to_roman(3) == "III"
+puts to_roman(4) == "IV"
 puts to_roman(6) == "VI"
-puts to_roman(9) == "VIIII"
-puts to_roman(1646) == "MDCXXXXVI"
+puts to_roman(9) == "IX"
+puts to_roman(44) == "XLIV"
+puts to_roman(1646) == "MDCXLVI"
 
 # TODO: what other cases could you add to ensure your to_roman method is working?
