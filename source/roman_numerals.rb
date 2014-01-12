@@ -25,7 +25,6 @@ def to_roman(number)
       number -= arabic
     end
   end
-  p solution
 end
 
 # Drive code... this should print out trues.
